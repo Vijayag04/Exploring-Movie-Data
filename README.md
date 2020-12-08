@@ -10,55 +10,75 @@ Now you will put your new skills to use with a large end-of-Phase project! This 
 
 For this project, you will use exploratory data analysis to generate insights for a business stakeholder.
 
-### Business Problem
+Project Title: Exploring and Analyzing Movie Data.
 
-Microsoft sees all the big companies creating original video content and they want to get in on the fun. They have decided to create a new movie studio, but they don’t know anything about creating movies. You are charged with exploring what types of films are currently doing the best at the box office. You must then translate those findings into actionable insights that the head of Microsoft's new movie studio can use to help decide what type of films to create.
+Project Description:
+    To conduct analysis on movie data with the purpose of developing a market 
+    overview for our stakeholder, Microsoft Corporation, and coming up with
+    recommendations.
 
-### The Data
-
-In the folder `zippedData` are movie datasets from:
+Data:
+    In the folder `zippedData` are movie datasets from:
 
 * Box Office Mojo
 * IMDB
 * Rotten Tomatoes
-* TheMovieDB.org
+* TheMovieDB.org 
 
-It is up to you to decide what data from this to use and how to use it. If you want to make this more challenging, you can scrape websites or make API calls to get additional data. If you are feeling overwhelmed or behind (e.g. struggled with the Phase 1 Code Challenge), we recommend you use only the following data files:
+Setting Up Our Data:
+The modules I imported were:
 
-* imdb.title.basics
-* imdb.title.ratings
-* bom.movie_gross
+- pandas for data analysis
+- numpy for scientific computation
+- matplotlib for basic plotting
+- seaborn for advanced plotting
 
-## Deliverables
+Used read_files function to read the files from zippeddata folder and return each file as dataframes.
 
-There are three deliverables for this project:
+Key Findings:
 
-* A **GitHub repository**
-* A **Jupyter Notebook**
-* A **non-technical presentation**
+1. When is the best time of year to release a movie?
 
-Review the "Project Submission & Review" page in the "Milestones Instructions" topic for instructions on creating and submitting your deliverables. Refer to the rubric associated with this assignment for specifications describing high-quality deliverables.
+Loading data file 'tn.movie_budgets.csv.gz' to a dataframe, this file consists of data about movies release dates, movie titles, production budgets, domestic gross, and worldwide gross. Through this data, we can analyze how the movie performed in the box office and group them by the month they released to find out most profitable month to release a movie.
+Performed conversion, cleaned the data and grouped the data by month they were released and plotted a bar graph
+using seaborn.
 
-### Key Points
+Conclusion: December is the most profitable month to release the month followed by June.
 
-* **Your analysis should yield three concrete business recommendations.** The ultimate purpose of exploratory analysis is not just to learn about the data, but to help an organization perform better. Explicitly relate your findings to business needs by recommending actions that you think the business (Microsoft) should take.
 
-* **Communicating about your work well is extremely important.** Your ability to provide value to an organization - or to land a job there - is directly reliant on your ability to communicate with them about what you have done and why it is valuable. Create a storyline your audience (the head of Microsoft's new movie studio) can follow by walking them through the steps of your process, highlighting the most important points and skipping over the rest.
+![image1.png](attachment:image.png)
 
-* **Use plenty of visualizations.** Visualizations are invaluable for exploring your data and making your findings accessible to a non-technical audience. Spotlight visuals in your presentation, but only ones that relate directly to your recommendations. Simple visuals are usually best (e.g. bar charts and line graphs), and don't forget to format them well (e.g. labels, titles).
+2.Which Studios have the most profitable films?
 
-## Getting Started
+Loading data file 'bom.movie_gross.csv.gz' to a dataframe, this file consists of movie titles, studios, years, domestic gross, and foreign gross. Through this data, we can analyze the best performed movies and studios.
+Checked for missing values and cleaned the data, sorted the data based on domestic gross and grouped them by  
+studio.
+Conclusion: Buena Vista(BV) studio have the most profitable films followed by Universal(Uni.).
 
-Please start by reviewing this assignment, the rubric at the bottom of it, and the "Project Submission & Review" page. If you have any questions, please ask your instructor ASAP.
+![image2.png](attachment:image.png)
 
-Next, we recommend you check out [the Phase 1 Project Templates and Examples repo](https://github.com/learn-co-curriculum/dsc-project-template) and use the MVP template for your project.
+3.How does rating of the movie affect  on other factors?
+ 
+ Loading the files 'imdb.title.ratings.csv.gz' and 'imdb.title.basics.csv.gz' these to dataframe. 
+Analyzing movie data to figure out the top rated movies we need data from title_rating and title_basics files. 
+Merging dataframes on columns 'tconst' to get movie titles,ratings and assigning to a new dataframe. Performing left merge because title_rating_df have less records when compare with title_basic_df to avoid the missing data.
+Sorted the data by average rating and plotted a bar graph using seaborn. 
+Noticed more then 10 movies have a average rating 10, to investigate further grouped the dataframe by average rating  and counted the movies, and assigned to a new dataframe. Sorted the dataframe by average rating and plotted a line graph.
+Further investigate how rating of the movie affect the profit/loss of a movie, by merging the dataframe to movie_budget dataframe. Noticed duplicate entries in dataframe with columns movie and release date. Eliminated duplicates values need by drop them from dataframe. Analyze the correlation between the rating, budget, profit/loss, runtime, start year and number votes. Creating new database and assigning those columns. Plotting a seaborn heatmap to visualize correlation of those columns.
+Conclusion:
+1. Average rating Vs profit/loss both have 0.16 correlation between them. Means there is a low possibility that movies with higher average rating in profits.
+2. Production_budget Vs profit both have 0.65 correlation between them. Means there is a good possibility that movies with higher investments result in better revenue.
+3.Start_year Vs numvotes have a negative(-0.088) correlation. Means that movie rating (numvotes) do not depend on the release year.
 
-Alternatively, you can fork [the Phase 1 Project Repository](https://github.com/learn-co-curriculum/dsc-phase-1-project), clone it locally, and work in the `student.ipynb` file. Make sure to also add and commit a PDF of your presentation to your repository with a file name of `presentation.pdf`.
 
-## Project Submission and Review
+![image3.png](attachment:image.png)
 
-Review the "Project Submission & Review" page in the "Milestones Instructions" topic to learn how to submit your project and how it will be reviewed. Your project must pass review for you to progress to the next Phase.
+Recommendations:
 
-## Summary
+1.Plan production schedule to release the movie in December(Holiday season) for better profits.
 
-This project will give you a valuable opportunity to develop your data science skills using real-world data. The end-of-phase projects are a critical part of the program because they give you a chance to bring together all the skills you've learned, apply them to realistic projects for a business stakeholder, practice communication skills, and get feedback to help you improve. You've got this!
+2.The profit of the movie does not necessarily depend on high ratings of the movies, don't worry about the rating.
+
+3.Higher production budgets are likely to have a higher profits.
+
+blog post: https://gvijayared.medium.com/data-visualization-made-simple-using-python-seaborn-a62f87623956
