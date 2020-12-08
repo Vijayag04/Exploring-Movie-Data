@@ -37,7 +37,7 @@ using seaborn.
 Conclusion: December is the most profitable month to release the month followed by June.
 
 
-![image1](profitable month.png)
+![image1](profitable_month.png)
 
 2.Which Studios have the most profitable films?
 
