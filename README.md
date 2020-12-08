@@ -62,7 +62,7 @@ Conclusion:
 3.Start_year Vs numvotes have a negative(-0.088) correlation. Means that movie rating (numvotes) do not depend on the release year.
 
 
-![image3.png](attachment:image.png)
+![image3](correlation.png)
 
 Recommendations:
 
