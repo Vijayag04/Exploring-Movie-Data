@@ -46,7 +46,7 @@ Checked for missing values and cleaned the data, sorted the data based on domest
 studio.
 Conclusion: Buena Vista(BV) studio have the most profitable films followed by Universal(Uni.).
 
-![image2.png](attachment:image.png)
+![image2](studio.png)
 
 3.How does rating of the movie affect  on other factors?
  
